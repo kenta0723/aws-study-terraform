@@ -1,0 +1,9 @@
+.providers/
+.terraform/
+providers/
+*.tfstate
+*.tfstate.backup
+.terraform/
+providers/
+terraform.tfstate
+terraform.tfstate.backup
