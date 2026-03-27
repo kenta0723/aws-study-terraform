@@ -1,5 +1,3 @@
-
-
 data "aws_availability_zones" "available" {} #既存であるAZを参照したいのでdataを使用
 
 #--------------------
@@ -17,7 +15,7 @@ resource "aws_subnet" "public_1a" {
   availability_zone = data.aws_availability_zones.available.names[0] #上記のAZで参照した（今回は東京リージョン）の０（1a）を指定
 
   tags = {
-    "Name" = "aws-study-subnet1a"
+    "Name" = "aws-study-subnet-1a"
   }
 }
 
@@ -32,7 +30,7 @@ resource "aws_subnet" "public_1c" {
   availability_zone = data.aws_availability_zones.available.names[1]
 
   tags = {
-    "Name" = "aws-study-subnet1c"
+    "Name" = "aws-study-subnet-1c"
   }
 }
 
@@ -40,7 +38,7 @@ resource "aws_subnet" "public_1c" {
 #private
 #--------------------
 
-resource "aws_subnet" "private1a" {
+resource "aws_subnet" "private_1a" {
 
   vpc_id = var.vpc_id
 
@@ -51,13 +49,13 @@ resource "aws_subnet" "private1a" {
   availability_zone = data.aws_availability_zones.available.names[0]
 
   tags = {
-    "Name" = "aws-study-private1a"
+    "Name" = "aws-study-private-1a"
   }
 
 
 }
 
-resource "aws_subnet" "private1c" {
+resource "aws_subnet" "private_1c" {
 
   vpc_id = var.vpc_id
 
@@ -68,7 +66,7 @@ resource "aws_subnet" "private1c" {
   availability_zone = data.aws_availability_zones.available.names[1]
 
   tags = {
-    "Name" = "aws-study-private1c"
+    "Name" = "aws-study-private-1c"
   }
 
 
@@ -83,8 +81,8 @@ resource "aws_db_subnet_group" "rdsdbsubnetgroup" {
   name = "rdsdbsubnetgroup"
 
   subnet_ids = [
-    aws_subnet.private1a.id,
-    aws_subnet.private1c.id
+    aws_subnet.private_1a.id,
+    aws_subnet.private_1c.id
   ]
 
   tags = {

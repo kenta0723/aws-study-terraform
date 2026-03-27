@@ -1,6 +1,4 @@
-
-
-
-output "aws_SNS_Topic_arn" {
-  value = aws_sns_topic.aws_SNS_Topic.arn
+output "aws_sns_topic_arn" {
+  description = "ARN of AWSSNSTopic"
+  value       = aws_sns_topic.aws_sns_topic.arn
 }

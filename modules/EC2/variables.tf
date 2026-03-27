@@ -1,8 +1,9 @@
-
 variable "subnet_1a_id" {
-  type = string
+  description = "ID of Public Subnet 1a"
+  type        = string
 }
 
-variable "aws_study_sg_id" {
-  type = string
+variable "ec2_sg_id" {
+  description = "Security Group ID for EC2 instance"
+  type        = string
 }

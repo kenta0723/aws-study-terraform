@@ -1,8 +1,4 @@
-
-
-data "aws_availability_zones" "available" {} #既存であるAZを参照したいのでdataを使用
-
-resource "aws_db_instance" "RDS" {
+resource "aws_db_instance" "rds" {
 
   allocated_storage = 20
 
@@ -17,12 +13,11 @@ resource "aws_db_instance" "RDS" {
   username = var.db_masteryourname
 
   #サブネット・セキュリティグループ紐づけ
-  db_subnet_group_name   = var.aws_db_subnet_group_id
-  vpc_security_group_ids = [var.RDS_id]
+  db_subnet_group_name   = var.db_subnet_group_id
+  vpc_security_group_ids = [var.rds_sg_id]
 
   auto_minor_version_upgrade = "true"
   storage_type               = "gp2"
-  availability_zone          = data.aws_availability_zones.available.names[0]
   backup_retention_period    = 1
   parameter_group_name       = "default.mysql8.0"
   skip_final_snapshot        = "true"

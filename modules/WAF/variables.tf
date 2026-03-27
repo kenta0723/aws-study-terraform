@@ -1,7 +1,9 @@
-variable "aws_ELB_arn" {
-  type = string
+variable "aws_elb_arn" {
+  description = "ARN of ELB"
+  type        = string
 }
 
 variable "cloudwatchlogs_arn" {
-  type = string
+  description = "ARN of Cloud Watch Logs"
+  type        = string
 }

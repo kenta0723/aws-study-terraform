@@ -40,7 +40,7 @@ module "RouteTable" {
 
   vpc_id = module.VPC.vpc_id
 
-  IGW_id = module.IGW.IGW_id
+  igw_id = module.IGW.igw_id
 
   subnet_1a_id = module.Subnet.public_1a_id
 
@@ -58,18 +58,18 @@ module "EC2" {
 
   subnet_1a_id = module.Subnet.public_1a_id
 
-  aws_study_sg_id = module.Security_Group.aws_study_sg_id
+  ec2_sg_id = module.Security_Group.ec2_sg_id
 }
 
 module "RDS" {
   source = "./modules/RDS"
 
-  RDS_id = module.Security_Group.RDS_id
+  rds_sg_id = module.Security_Group.rds_sg_id
 
   db_masteryourname = var.db_masteryourname
   db_masterpassword = var.db_masterpassword
 
-  aws_db_subnet_group_id = module.Subnet.rdsdbsubnetgroup_id
+  db_subnet_group_id = module.Subnet.db_subnet_group_id
 
 
 
@@ -78,8 +78,8 @@ module "RDS" {
 module "ALB_target_group" {
   source = "./modules/ALB_target_group"
 
-  vpc_id           = module.VPC.vpc_id
-  aws_study_ec2_id = module.EC2.aws_study_ec2_id
+  vpc_id = module.VPC.vpc_id
+  ec2_id = module.EC2.ec2_id
 }
 
 module "ALB" {
@@ -89,14 +89,14 @@ module "ALB" {
 
   subnet_1c_id = module.Subnet.public_1c_id
 
-  ELB_sg_id = module.Security_Group.ELB_sg_id
+  elb_sg_id = module.Security_Group.elb_sg_id
 
 }
 
 module "ListenerRule" {
   source = "./modules/ListenerRule"
 
-  aws_ELB_arn = module.ALB.aws_ELB_arn
+  aws_elb_arn = module.ALB.aws_elb_arn
 
   alb_tg_arn = module.ALB_target_group.alb_tg_arn
 }
@@ -104,15 +104,15 @@ module "ListenerRule" {
 module "CloudWatch" {
   source = "./modules/CloudWatch"
 
-  aws_study_ec2_id = module.EC2.aws_study_ec2_id
+  aws_study_ec2_id = module.EC2.ec2_id
 
-  aws_SNS_Topic_arn = module.AWSSNSTopic.aws_SNS_Topic_arn
+  aws_sns_topic_arn = module.AWSSNSTopic.aws_sns_topic_arn
 }
 
 module "WAF" {
   source = "./modules/WAF"
 
-  aws_ELB_arn = module.ALB.aws_ELB_arn
+  aws_elb_arn = module.ALB.aws_elb_arn
 
   cloudwatchlogs_arn = module.CloudWatch.cloudwatchlogs_arn
 }

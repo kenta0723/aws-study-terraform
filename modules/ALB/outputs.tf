@@ -1,5 +1,4 @@
-
-
-output "aws_ELB_arn" {
-  value = aws_lb.aws_ELB.arn
+output "aws_elb_arn" {
+  description = "ARN of ELB"
+  value       = aws_lb.aws_elb.arn
 }

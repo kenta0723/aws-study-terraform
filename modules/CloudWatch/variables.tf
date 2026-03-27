@@ -1,9 +1,10 @@
-
 variable "aws_study_ec2_id" {
-  type = string
+  description = "EC2 ID to create resources in"
+  type        = string
 }
 
 
-variable "aws_SNS_Topic_arn" {
-  type = string
+variable "aws_sns_topic_arn" {
+  description = "ARN of AWSSNSTopic"
+  type        = string
 }

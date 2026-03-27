@@ -1,4 +1,4 @@
-
 output "alb_tg_arn" {
-  value = aws_lb_target_group.aws_study_tg.arn
+  description = "ARN of ELB Target Group"
+  value       = aws_lb_target_group.lb_tg.arn
 }
