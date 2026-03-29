@@ -1,7 +1,4 @@
-
-
-
-resource "aws_wafv2_web_acl" "webACL" {
+resource "aws_wafv2_web_acl" "webacl" {
   name        = "aws-study-acl"
   description = "waf to cloudwatch"
   scope       = "REGIONAL"
@@ -41,13 +38,13 @@ resource "aws_wafv2_web_acl" "webACL" {
 }
 
 resource "aws_wafv2_web_acl_association" "webaclssociation" {
-  resource_arn = var.aws_ELB_arn
-  web_acl_arn  = aws_wafv2_web_acl.webACL.arn
+  resource_arn = var.aws_elb_arn
+  web_acl_arn  = aws_wafv2_web_acl.webacl.arn
 }
 
 
 resource "aws_wafv2_web_acl_logging_configuration" "waf-traficlogs" {
-  resource_arn = aws_wafv2_web_acl.webACL.arn
+  resource_arn = aws_wafv2_web_acl.webacl.arn
   log_destination_configs = [
     var.cloudwatchlogs_arn
   ]

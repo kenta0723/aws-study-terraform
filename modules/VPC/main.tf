@@ -1,5 +1,3 @@
-
-
 resource "aws_vpc" "vpc" { #resource "リソース種類" "Terraform内の名前"
 
   cidr_block           = "10.0.0.0/16"

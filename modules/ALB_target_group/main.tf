@@ -1,11 +1,8 @@
-
-
-
-resource "aws_lb_target_group" "aws_study_tg" {
+resource "aws_lb_target_group" "lb_tg" {
 
   vpc_id = var.vpc_id
 
-  name = "aws-study-tg"
+  name = "lb-tg"
 
   port             = 8080
   protocol         = "HTTP"
@@ -39,7 +36,7 @@ resource "aws_lb_target_group" "aws_study_tg" {
 #-------------
 
 resource "aws_lb_target_group_attachment" "aws_elb_attachment" {
-  target_group_arn = aws_lb_target_group.aws_study_tg.arn
-  target_id        = var.aws_study_ec2_id
+  target_group_arn = aws_lb_target_group.lb_tg.arn
+  target_id        = var.ec2_id
   #-----EC2をELBTargetGroupに紐づけ-----
 }

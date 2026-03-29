@@ -1,18 +1,20 @@
-
-
 variable "db_masterpassword" {
-  type = string
+  description = "Master Password for the RDS"
+  type        = string
 }
 
 variable "db_masteryourname" {
-  type = string
+  description = "Master username for the RDS"
+  type        = string
 }
 
-variable "RDS_id" {
-  type = string
+variable "rds_sg_id" {
+  description = "Security Group ID for the RDS"
+  type        = string
 }
 
-variable "aws_db_subnet_group_id" {
-  type = string
+variable "db_subnet_group_id" {
+  description = "DB Subnet Group ID for the RDS"
+  type        = string
 
 }

@@ -1,9 +1,6 @@
+resource "aws_lb_listener" "elblistener" {
 
-
-
-resource "aws_lb_listener" "ALBlistener" {
-
-  load_balancer_arn = var.aws_ELB_arn
+  load_balancer_arn = var.aws_elb_arn
   port              = 80
   protocol          = "HTTP"
 

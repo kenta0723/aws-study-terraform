@@ -1,4 +1,4 @@
-
 variable "my_email_address" {
-  type = string
+  description = "Email address for AWSSNSTopic"
+  type        = string
 }

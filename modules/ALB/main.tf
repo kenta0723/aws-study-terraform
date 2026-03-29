@@ -1,11 +1,10 @@
-
 #==================
 #ELB
 #==================
 
-resource "aws_lb" "aws_ELB" {
+resource "aws_lb" "aws_elb" {
 
-  name = "aws-study-elb"
+  name = "elb"
 
   ip_address_type = "ipv4"
 
@@ -16,7 +15,7 @@ resource "aws_lb" "aws_ELB" {
 
   ]
 
-  security_groups = [var.ELB_sg_id]
+  security_groups = [var.elb_sg_id]
 
 
 }

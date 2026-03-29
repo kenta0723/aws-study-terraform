@@ -1,5 +1,3 @@
-
-
 #------------------
 #CloudWatch
 #------------------
@@ -26,7 +24,7 @@ resource "aws_cloudwatch_metric_alarm" "aws_study_cloudwatch" {
   }
 
   actions_enabled = "true"
-  alarm_actions   = [var.aws_SNS_Topic_arn]
+  alarm_actions   = [var.aws_sns_topic_arn]
 
 }
 
