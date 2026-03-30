@@ -68,17 +68,6 @@ resource "aws_vpc_security_group_ingress_rule" "ssh_from_myip" {
   cidr_ipv4         = local.my_ip
 }
 
-resource "aws_vpc_security_group_ingress_rule" "http_from_elb" {
-
-  security_group_id = aws_security_group.ec2_sg.id
-  # referenced=どのSGからの通信を許可するか(ELBのセキュリティグループからのHTTP通信を許可)
-  referenced_security_group_id = aws_security_group.elb_sg.id
-  ip_protocol                  = "tcp"
-  from_port                    = 80
-  to_port                      = 80
-  description                  = "http from elb sg"
-}
-
 resource "aws_vpc_security_group_ingress_rule" "http8080port_from_elb" {
 
   security_group_id = aws_security_group.ec2_sg.id
